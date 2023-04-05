@@ -23,7 +23,7 @@ AUTH_METHOD=LOGIN
 
 # Initialize email settings
 email_init() {
-  /f [ "$SMTP_SECURITY" == "force_tls" ]; then
+  if [ "$SMTP_SECURITY" == "force_tls" ]; then
     MUTT_SSL_KEY=ssl_force_tls
     SMTP_PROTO=smtps
   else
