@@ -101,7 +101,7 @@ rclone_init() {
 # with the addition of backing up:
 # * attachments directory
 # * sends directory
-# * config.json
+# * config.json (only if admin panel is in use)
 # * rsa_key* files
 make_backup() {
   # use sqlite3 to create backup (avoids corruption if db write in progress)
@@ -116,7 +116,7 @@ make_backup() {
   FILES=""
   FILES="$FILES $([ -d attachments ] && echo attachments)"
   FILES="$FILES $([ -d sends ] && echo sends)"
-  FILES="$FILES $([ -f config.json ] && echo sends)"
+  FILES="$FILES $([ -f config.json ] && echo config.json)"
   FILES="$FILES $([ -f rsa_key.der -o -f rsa_key.pem -o -f rsa_key.pub.der ] && echo rsa_key*)"
 
   # tar up files and encrypt with openssl and encryption key
