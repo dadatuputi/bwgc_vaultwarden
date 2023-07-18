@@ -1,3 +1,5 @@
+Note: This repository is deprecated, use [bwgc_backup](https://github.com/dadatuputi/bwgc_backup) in conjunction with [vaultwarden](https://github.com/dani-garcia/vaultwarden) instead (see https://github.com/dadatuputi/bitwarden_gcloud/commit/19c024bfcff789bb9a357139b2a9fee222fe1759). This repo and docker image will continue to be built with the latest `vaultwarden/server:alpine` image, but it won't get updates to the backup scripts.  
+
 # Bitwarden on Google Cloud Docker Image - Vaultwarden
 
 This is the vaultwarden container repository for the [Bitwarden self-hosted on Google Cloud for Free project](https://github.com/dadatuputi/bitwarden_gcloud).
