@@ -1,4 +1,4 @@
-FROM vaultwarden/server:alpine
+FROM vaultwarden/server:latest-alpine
 
 RUN apk --update --no-cache add sqlite mutt
 
