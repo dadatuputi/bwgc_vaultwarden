@@ -115,5 +115,3 @@ jobs:
       # Keep repo alive with dummy commits: https://github.com/marketplace/actions/keepalive-workflow
       - name: Keepalive
         uses: gautamkrishnar/keepalive-workflow@v1 # using the workflow with default settings
-        with:
-          time_elapsed: 1
