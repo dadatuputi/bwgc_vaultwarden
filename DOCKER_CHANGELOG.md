@@ -452,3 +452,4 @@
 * 2026-07-22 06:02:11 UTC: No change to base image vaultwarden/server:latest-alpine
 * 2026-07-23 06:07:32 UTC: No change to base image vaultwarden/server:latest-alpine
 * 2026-07-24 06:01:45 UTC: No change to base image vaultwarden/server:latest-alpine
+* 2026-07-25 05:48:51 UTC: Base image vaultwarden/server:latest-alpine updated: linux/amd64
