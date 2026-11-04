@@ -1,6 +1,9 @@
 FROM vaultwarden/server:latest-alpine
 
-RUN apk --update --no-cache add sqlite mutt
+# apk upgrade first: the base image's own packages (apk-tools, for one) can lag
+# the repository index, and the nightly rebuild only helps if it brings them up
+# to date too.
+RUN apk upgrade --no-cache && apk add --no-cache sqlite mutt
 
 RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
 RUN unzip rclone-current-linux-amd64.zip
