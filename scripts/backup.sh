@@ -83,9 +83,6 @@ To restore, untar in the Bitwarden data directory:
 # Initialize rclone
 RCLONE=/usr/bin/rclone
 rclone_init() {
-  # The Dockerfile installs rclone, so this should never run. If it does, take
-  # rclone from the Alpine repository, whose packages apk verifies, rather
-  # than an unchecked download.
   apk add --no-cache rclone
 
   printf "Rclone installed to %b\n" "$(command -v rclone)" >> $LOG
