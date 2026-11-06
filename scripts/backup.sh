@@ -83,16 +83,9 @@ To restore, untar in the Bitwarden data directory:
 # Initialize rclone
 RCLONE=/usr/bin/rclone
 rclone_init() {
-  # Install rclone - https://wiki.alpinelinux.org/wiki/Rclone
-  # rclone install now handled in Dockerfile, so this function should never be executed
-  curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
-  unzip rclone-current-linux-amd64.zip
-  cd rclone-*-linux-amd64
-  cp rclone /usr/bin/
-  chown root:root $RCLONE
-  chmod 755 $RCLONE
+  apk add --no-cache rclone
 
-  printf "Rclone installed to %b\n" "$RCLONE" >> $LOG
+  printf "Rclone installed to %b\n" "$(command -v rclone)" >> $LOG
 }
 
 
@@ -126,7 +119,7 @@ make_backup() {
   # If a password is provided, run it through openssl
   if [ -n "$BACKUP_ENCRYPTION_KEY" ]; then
     BACKUP_FILE=$BACKUP_FILE.aes256
-    tar -czf - -C $SQL_BACKUP_DIR $SQL_NAME -C $DATA $FILES | openssl enc -e -aes256 -salt -pbkdf2 -pass pass:${BACKUP_ENCRYPTION_KEY} -out $BACKUP_FILE
+    tar -czf - -C $SQL_BACKUP_DIR $SQL_NAME -C $DATA $FILES | openssl enc -e -aes256 -salt -pbkdf2 -pass env:BACKUP_ENCRYPTION_KEY -out $BACKUP_FILE
   else
     tar -czf $BACKUP_FILE -C $SQL_BACKUP_DIR $SQL_NAME -C $DATA $FILES
   fi
